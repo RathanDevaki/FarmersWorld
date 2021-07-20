@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateAccount">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Create Account"
+            android:layout_gravity="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="36sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="Fill the below fields to create an account"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:background="@color/colorWhite">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="128dp"
+                    android:layout_height="128dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="36dp"
+                    android:src="@drawable/ic_account_circle"
+                    android:id="@+id/userPhotoCreateAccount" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Click to add photo"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="4dp"
+                    android:textSize="12sp" />
+
+
+                <EditText
+                    android:id="@+id/userNameSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:textSize="14sp"
+                    android:background="@drawable/edittext_grey_border"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:hint="Name"
+                    android:inputType="textPersonName"
+                    android:padding="16dp"
+                    android:textColor="@color/colorBlack" />
+
+                <EditText
+                    android:id="@+id/userPhoneSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/edittext_grey_border"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:hint="Phone Number"
+                    android:textSize="14sp"
+                    android:maxLength="10"
+                    android:inputType="phone"
+                    android:padding="16dp"
+                    android:textColor="@color/colorBlack" />
+
+                <EditText
+                    android:id="@+id/userEmailSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/edittext_grey_border"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:hint="Email ID"
+                    android:textSize="14sp"
+                    android:inputType="textEmailAddress"
+                    android:padding="16dp"
+                    android:textColor="@color/colorBlack" />
+
+                <EditText
+                    android:id="@+id/passwordSignup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:textSize="14sp"
+                    android:background="@drawable/edittext_grey_border"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:padding="16dp"
+                    android:textColor="@color/colorBlack" />
+
+                <EditText
+                    android:id="@+id/userAddressSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/edittext_grey_border"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:hint="Address"
+                    android:textSize="14sp"
+                    android:inputType="textPostalAddress"
+                    android:padding="16dp"
+                    android:textColor="@color/colorBlack" />
+
+
+                <EditText
+                    android:id="@+id/userDOBSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/edittext_grey_border"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:hint="Date of Birth"
+                    android:textSize="14sp"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:padding="16dp"
+                    android:textColor="@color/colorBlack" />
+
+
+                <EditText
+                    android:id="@+id/userAadharSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/edittext_grey_border"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:hint="Aadhar Number"
+                    android:textSize="14sp"
+                    android:maxLength="12"
+                    android:inputType="number"
+                    android:padding="16dp"
+                    android:textColor="@color/colorBlack" />
+
+
+
+
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_margin="18dp"
+                    android:indeterminateDrawable="@drawable/circle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    tools:progress="60" />
+
+                <Button
+                    android:visibility="visible"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Create User"
+                    android:textAllCaps="false"
+                    android:background="@drawable/button_rounded_corners_blue"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorWhite"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:id="@+id/signUpBtn"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+
+                    />
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

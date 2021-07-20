@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1080064858464",
+    "project_id": "farmersworld-c1c64",
+    "storage_bucket": "farmersworld-c1c64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080064858464:android:7f6b4e56d89b997742e605",
+        "android_client_info": {
+          "package_name": "com.rathandevaki.farmersworld"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080064858464-3ljd01qvno1jea86816ohentk2t83m31.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rathandevaki.farmersworld",
+            "certificate_hash": "590f2570a96fe05bbabf35470fa7523eaf2aaddf"
+          }
+        },
+        {
+          "client_id": "1080064858464-86gonqveaq40370c7ncacvaa4f58smgm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAU0ZuC2om5apRfVWCDMvl97UsdVTyzfNU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1080064858464-86gonqveaq40370c7ncacvaa4f58smgm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
