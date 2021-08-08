@@ -1,9 +1,10 @@
 package com.rathandevaki.farmersworld;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import es.dmoral.toasty.Toasty;
 
@@ -16,14 +17,9 @@ public class HomePage extends AppCompatActivity {
     }
 
     public void productExchange(View view) {
-        Toasty.success(HomePage.this,"Product exchange",Toasty.LENGTH_SHORT).show();
-    }
-
-    public void farmerVoice(View view) {
-        Toasty.success(HomePage.this,"Product exchange",Toasty.LENGTH_SHORT).show();
-    }
-
-    public void workingOpportunity(View view) {
+        Intent i=new Intent(HomePage.this,NavDrawer.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
         Toasty.success(HomePage.this,"Product exchange",Toasty.LENGTH_SHORT).show();
     }
 }

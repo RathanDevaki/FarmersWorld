@@ -1,17 +1,20 @@
 package com.rathandevaki.farmersworld;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -59,11 +62,11 @@ public class Login extends AppCompatActivity {
         }
         else {
 
-            String str_uid=u_id.getText().toString();
-            String str_password=password_et.getText().toString();
+            final String str_uid=u_id.getText().toString();
+            final String str_password=password_et.getText().toString();
             Log.v("In else ", str_uid);
             firebaseDatabase = FirebaseDatabase.getInstance();
-            DatabaseReference databaseReference = firebaseDatabase.getReference().child("UsersList");
+            DatabaseReference databaseReference = firebaseDatabase.getReference().child("UserDetails");
 
             databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -71,16 +74,20 @@ public class Login extends AppCompatActivity {
                 {
                     if(snapshot.hasChild(str_uid))
                     {
-                        DatabaseReference db1=firebaseDatabase.getReference().child("UsersList").child(str_uid);
+                        DatabaseReference db1=firebaseDatabase.getReference().child("UserDetails").child(str_uid);
                         db1.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 if(snapshot.hasChild("Password"))
                                 {
+                                    String db_name=snapshot.child("Name").getValue(String.class);
                                     String db_password=snapshot.child("Password").getValue(String.class);
                                     if(db_password.equals(str_password)) {
+                                        Toasty.success(Login.this, "Hello "+db_name+"", Toast.LENGTH_SHORT).show();
+                                        saveUserID(str_uid);
+
                                         Toasty.success(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                        Intent intent=new Intent(Login.this,HomePage.class);
+                                        Intent intent=new Intent(Login.this,NavDrawer.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                         startActivity(intent);
                                     }
@@ -112,15 +119,23 @@ public class Login extends AppCompatActivity {
                 }
             });
 
-          //  final DatabaseReference databaseReference1 = firebaseDatabase.getReference();
             Toast.makeText(Login.this, "Loading..", Toast.LENGTH_LONG).show();
         }
 
     }
+    private void saveUserID(String str_uid) { // Save user ID and Plan Name in shared Preferences for future use
+        SharedPreferences preferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("UserID", str_uid);
+        editor.commit();
+        Log.v("Preference",preferences.getString("UserID", ""));
 
+    }
     public void create_account(View view) {
-        Intent intent=new Intent(getApplicationContext(),CreateAccount.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
+
+        Fragment fragment = new CreateUser();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.content, fragment);
+        transaction.commit();
     }
 }

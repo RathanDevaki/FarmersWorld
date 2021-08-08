@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:orientation="vertical"
+        android:padding="16dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Create Opportunity"
+            android:layout_gravity="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="28sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:id="@+id/job_desctiption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:textSize="14sp"
+                android:background="@drawable/edittext_grey_border"
+                android:fontFamily="@font/montserrat_medium"
+                android:hint="Job Desctiption"
+                android:inputType="textPersonName"
+                android:padding="16dp"
+                android:textColor="@color/colorBlack" />
+            <EditText
+                android:id="@+id/job_duration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:textSize="14sp"
+                android:background="@drawable/edittext_grey_border"
+                android:fontFamily="@font/montserrat_medium"
+                android:hint="Job Duration/day"
+                android:inputType="textPersonName"
+                android:padding="16dp"
+                android:textColor="@color/colorBlack" />
+            <EditText
+                android:id="@+id/job_salary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:textSize="14sp"
+                android:background="@drawable/edittext_grey_border"
+                android:fontFamily="@font/montserrat_medium"
+                android:hint="Salary in Rs."
+                android:inputType="number"
+                android:padding="16dp"
+                android:textColor="@color/colorBlack" />
+            <EditText
+                android:id="@+id/job_vacancies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:textSize="14sp"
+                android:background="@drawable/edittext_grey_border"
+                android:fontFamily="@font/montserrat_medium"
+                android:hint="No Of Vacancies"
+                android:inputType="number"
+                android:padding="16dp"
+                android:textColor="@color/colorBlack" />
+            <EditText
+                android:id="@+id/job_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:textSize="14sp"
+                android:background="@drawable/edittext_grey_border"
+                android:fontFamily="@font/montserrat_medium"
+                android:hint="Location"
+                android:inputType="textPersonName"
+                android:padding="16dp"
+                android:textColor="@color/colorBlack" />
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                style="?android:attr/progressBarStyle"
+                android:layout_margin="18dp"
+                android:indeterminateDrawable="@drawable/circle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                tools:progress="60" />
+
+            <Button
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Post"
+                android:textAllCaps="false"
+                android:background="@drawable/button_rounded_corners_blue"
+                android:textSize="16sp"
+                android:textColor="@color/colorWhite"
+                android:fontFamily="@font/montserrat_bold"
+                android:id="@+id/postButton_opportunity"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</FrameLayout>

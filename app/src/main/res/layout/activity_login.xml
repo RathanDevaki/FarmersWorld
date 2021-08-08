@@ -5,6 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Login">
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:hint="User ID"
+                android:hint="Phone Number or User ID"
                 android:backgroundTint="@color/colorPrimary"
                 android:fontFamily="@font/montserrat_medium"
                 android:textSize="14sp"
@@ -109,5 +113,5 @@
 
 
     </LinearLayout>
-
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

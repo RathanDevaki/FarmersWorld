@@ -4,8 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomePage">
-
+    tools:context=".ui.home.HomeFragment">
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/content"
+    >
     <LinearLayout
         android:background="@drawable/crop_bg2"
         android:layout_width="match_parent"
@@ -24,8 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:id="@+id/product_exchange"
-            android:onClick="productExchange"
+            android:id="@+id/main_product_exchange"
+
             >
 
             <ImageView
@@ -48,7 +52,7 @@
                 android:layout_weight="1"
                 android:textColor="@color/colorBlack"
                 android:text="Product Exchange"
-                android:onClick="productExchange"
+
                 />
 
         </LinearLayout>
@@ -61,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:onClick="farmerVoice"
+            android:id="@+id/farmer_voice"
             >
 
             <ImageView
@@ -84,7 +88,7 @@
                 android:layout_height="72dp"
                 android:layout_weight="1"
                 android:text="Farmer Voice"
-                android:onClick="farmerVoice"
+
                 />
 
         </LinearLayout>
@@ -97,7 +101,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:onClick="workingOpportunity"
+            android:id="@+id/working_opportunity"
             >
 
             <ImageView
@@ -121,10 +125,48 @@
                 android:layout_height="72dp"
                 android:layout_weight="1"
                 android:text="Working Opportunity"
-                android:onClick="workingOpportunity"
+
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:background="@drawable/button_rounded_corners_blue"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/chat"
+            >
+
+            <ImageView
+                android:padding="8dp"
+                android:layout_gravity="left"
+                android:id="@+id/chat_image"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_weight="0"
+                app:srcCompat="@drawable/chat" />
+
+            <TextView
+
+                android:textSize="16sp"
+                android:textColor="@color/colorBlack"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:id="@+id/chat_text"
+                android:layout_width="wrap_content"
+                android:layout_height="72dp"
+                android:layout_weight="1"
+                android:text="Chat with others"
+
                 />
 
         </LinearLayout>
 
     </LinearLayout>
+</FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ProfileFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
+            >
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="24dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="32dp"
+                    android:background="@color/greyLight"
+                    app:cardBackgroundColor="@color/greyLight"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/photo_profile"
+                        android:layout_width="146dp"
+                        android:layout_height="146dp"
+                        android:layout_marginBottom="80dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/logo" />
+
+
+                    <TextView
+                        android:drawableLeft="@drawable/ic_baseline_person_24"
+                        android:drawablePadding="16dp"
+                        android:id="@+id/profile_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_margin="8dp"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text="Loading..."
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:drawableLeft="@drawable/ic_baseline_location_on_24"
+                        android:drawablePadding="16dp"
+                        android:id="@+id/profile_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_margin="8dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="Loading..."
+                        android:textSize="16sp" />
+                    <TextView
+                        android:drawableLeft="@drawable/ic_baseline_local_phone_24"
+                        android:drawablePadding="16dp"
+                        android:id="@+id/profile_phone"
+                        android:layout_margin="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="Loading..."
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:drawableLeft="@drawable/ic_baseline_credit_card_24"
+                        android:drawablePadding="16dp"
+                        android:id="@+id/adhar_number"
+                        android:layout_margin="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="Loading..."
+                        android:textSize="16sp" />
+                    <TextView
+                        android:drawableLeft="@drawable/ic_baseline_email_24"
+                        android:drawablePadding="16dp"
+                        android:id="@+id/email_id"
+                        android:layout_margin="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="Loading..."
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+
+            </FrameLayout>
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/sign_out"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/button_rounded_corners_blue"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Sign Out"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite" />
+
+    </RelativeLayout>
+</FrameLayout>
