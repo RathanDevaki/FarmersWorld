@@ -49,7 +49,7 @@ public class UsersActivity extends AppCompatActivity {
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>(){
             @Override
             public void onResponse(String s) {
-                Log.v("URL","url");
+               // Log.v("URL","url");
                 doOnSuccess(s);
             }
         },new Response.ErrorListener(){
@@ -65,6 +65,7 @@ public class UsersActivity extends AppCompatActivity {
         usersList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.v("Chat with check",UsersDetails.chatWith);
                 UsersDetails.chatWith = al.get(position);
                 startActivity(new Intent(UsersActivity.this, Chat.class));
             }

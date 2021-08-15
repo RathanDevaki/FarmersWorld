@@ -68,8 +68,8 @@ public class Chat extends AppCompatActivity {
         messageArea = (EditText)findViewById(R.id.messageArea);
         scrollView = (ScrollView)findViewById(R.id.scrollView);
 
-        Log.v("test send",userNameDB);
-        Log.v("Test rec",UsersDetails.chatWith);
+      //  Log.v("test send",userNameDB);
+        //Log.v("Test rec",UsersDetails.chatWith);
         Firebase.setAndroidContext(this);
         reference1 = new Firebase("https://farmersworld-c1c64-default-rtdb.firebaseio.com/messages/" + userNameDB+ "_" + UsersDetails.chatWith);
         reference2 = new Firebase("https://farmersworld-c1c64-default-rtdb.firebaseio.com/messages/" + UsersDetails.chatWith + "_" + userNameDB);
@@ -97,8 +97,8 @@ public class Chat extends AppCompatActivity {
                 Map map = dataSnapshot.getValue(Map.class);
                 String message = map.get("message").toString();
                 String userName = map.get("user").toString();
-
-                Log.v("Compare",userName+" -- "+userNameDB);
+                Log.v("Message",message);
+               // Log.v("Compare",userName+" -- "+userNameDB);
                 if(userName.equals(pref_userid)){
                     addMessageBox("You:-\n" + message, 1);
                 }

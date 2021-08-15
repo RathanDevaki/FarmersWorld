@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -98,14 +99,26 @@ public class ProfileFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fm = getActivity().getSupportFragmentManager();
-                for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
-                    fm.popBackStack();
-                }
-                Intent i = new Intent(getActivity(),Login.class);
-                startActivity(i);
-
+                Toast.makeText(getContext(),"Signing Out",Toast.LENGTH_SHORT).show();
+                logOut();
             }
         });
     }
+    public void logOut(){
+
+        SharedPreferences preferences =getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.apply();
+
+
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+
+        Intent i = new Intent(getActivity(),Login.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(i);
+
+    }
+
+
 }

@@ -1,7 +1,10 @@
 package com.rathandevaki.farmersworld;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,6 +21,7 @@ import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -99,7 +103,7 @@ public class CreateUser extends Fragment {
         et_password=(EditText)rootView.findViewById(R.id.passwordSignup);
         et_address=(EditText)rootView.findViewById(R.id.userAddressSignUp);
         et_phone=(EditText)rootView.findViewById(R.id.userPhoneSignUp);
-        et_adhar=(EditText)rootView.findViewById(R.id.userAadharSignUp);
+
         et_dob=(EditText)rootView.findViewById(R.id.userDOBSignUp);
         et_email=(EditText)rootView.findViewById(R.id.userEmailSignUp);
         progressBar=(ProgressBar)rootView.findViewById(R.id.progress_bar);
@@ -125,7 +129,7 @@ public class CreateUser extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                addNotification();
                 signUpUser();
             }
         });
@@ -199,7 +203,6 @@ public class CreateUser extends Fragment {
         dob=et_dob.getText().toString();
         email=et_email.getText().toString();
         password=et_password.getText().toString();
-        adhar=et_adhar.getText().toString();
         Log.v("Name",username);
 
         if (TextUtils.isEmpty(username)) {
@@ -214,10 +217,7 @@ public class CreateUser extends Fragment {
         } else if (TextUtils.isEmpty(dob)) {
            et_dob.setError("Enter DOB");
             Toasty.error(getContext(), "Enter DOB").show();
-        }
-        else if (TextUtils.isEmpty(adhar)) {
-            et_adhar.setError("Enter Adhar Number");
-            Toasty.error(getContext(), "Enter Adhar Number").show();
+
         }else if (TextUtils.isEmpty(password)) {
             et_dob.setError("Enter Password ");
             Toasty.error(getContext(), "Enter Password").show();
@@ -270,7 +270,7 @@ public class CreateUser extends Fragment {
                             usersMap.put("EmailID",email);
                             usersMap.put("Address", address);
                             usersMap.put("DOB", dob);
-                            usersMap.put("Aadhar", adhar);
+                            //usersMap.put("Aadhar", adhar);
                             usersMap.put("Password",password);
 
                             final String pushKey = databaseReference.push().getKey();
@@ -297,7 +297,24 @@ public class CreateUser extends Fragment {
 
         }
     }
+    private void addNotification() {
+        // Builds your notification
+        Log.v("Not ","Notification");
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(getContext(), "M_CH_ID");
 
+        notificationBuilder.setAutoCancel(true)
+                .setDefaults(Notification.DEFAULT_ALL)
+                .setWhen(System.currentTimeMillis())
+                .setSmallIcon(R.drawable.logo)
+                .setTicker("Hearty365")
+                .setPriority(Notification.PRIORITY_MAX) // this is deprecated in API 26 but you can still use for below 26. check below update for 26 API
+                .setContentTitle("Default notification")
+                .setContentText("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+                .setContentInfo("Info");
+
+        NotificationManager notificationManager = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(1, notificationBuilder.build());
+    }
     private String getExtension(Uri uri) {
         ContentResolver contentResolver = getContext().getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();

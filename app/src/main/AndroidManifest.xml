@@ -29,7 +29,6 @@
             android:name=".NavDrawer"
             android:label="@string/title_activity_nav_drawer"
             android:theme="@style/Theme.FarmersWorld.NoActionBar" />
-        <activity android:name=".HomePage" />
         <activity android:name=".Login" />
         <activity android:name=".SplashActivity">
             <intent-filter>

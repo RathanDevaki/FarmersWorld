@@ -30,7 +30,7 @@ public class Login extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     EditText u_id,password_et;
-
+    String db_name;
     String user_id="";
     String password="";
 
@@ -53,6 +53,7 @@ public class Login extends AppCompatActivity {
     {
         if (TextUtils.isEmpty(u_id.getText().toString()))
         {
+
             u_id.setError("User Id required");
             Toasty.error(Login.this, "Empty field not allowed!", Toast.LENGTH_SHORT).show();
         }
@@ -80,7 +81,7 @@ public class Login extends AppCompatActivity {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 if(snapshot.hasChild("Password"))
                                 {
-                                    String db_name=snapshot.child("Name").getValue(String.class);
+                                   db_name=snapshot.child("Name").getValue(String.class);
                                     String db_password=snapshot.child("Password").getValue(String.class);
                                     if(db_password.equals(str_password)) {
                                         Toasty.success(Login.this, "Hello "+db_name+"", Toast.LENGTH_SHORT).show();
@@ -126,7 +127,8 @@ public class Login extends AppCompatActivity {
     private void saveUserID(String str_uid) { // Save user ID and Plan Name in shared Preferences for future use
         SharedPreferences preferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("UserID", str_uid);
+        editor.putString("UserID", str_uid).apply();
+        editor.putString("UserName",db_name);
         editor.commit();
         Log.v("Preference",preferences.getString("UserID", ""));
 
@@ -138,4 +140,5 @@ public class Login extends AppCompatActivity {
         transaction.replace(R.id.content, fragment);
         transaction.commit();
     }
+
 }

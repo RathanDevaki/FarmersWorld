@@ -2,6 +2,7 @@ package com.rathandevaki.farmersworld;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -22,29 +25,27 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class voiceAdapter extends FirebaseRecyclerAdapter<Voice, voiceAdapter.voiceViewholder> {
     ImageView PostPhoto;
     CircleImageView ProfilePhoto;
+    public String likedBy;
     private Context mContext;
+
     public voiceAdapter(
+
             @NonNull FirebaseRecyclerOptions<Voice> options)
     {
         super(options);
+
     }
 
-    // Function to bind the view in Card view(here
-    // "voice.xml") iwth data in
-    // model class(here "voice.class")
-
-    // Function to tell the class about the Card view (here
-    // "voice.xml")in
-    // which the data will be shown
     @NonNull
     @Override
     public voiceAdapter.voiceViewholder
     onCreateViewHolder(@NonNull ViewGroup parent,
                        int viewType)
     {
-        View view
-                = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_voice, parent, false);
+
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_voice, parent, false);
+        likedBy=init(view);
+        Log.v("LKB",likedBy);
         return new voiceAdapter.voiceViewholder(view);
     }
 
@@ -67,8 +68,8 @@ public class voiceAdapter extends FirebaseRecyclerAdapter<Voice, voiceAdapter.vo
             @Override
             public void onClick(View view) {
                 holder.likeButton.setImageResource(R.drawable.ic_baseline_like_red_24);
-                //  updateLikeInfo(model.getPrefID(),model.getUserID());
-                Log.v("Likde By","123");
+                updateLikeInfo(likedBy,model.getUserID());
+                Log.v("Likde By",likedBy);
 
 
             }
@@ -102,5 +103,18 @@ public class voiceAdapter extends FirebaseRecyclerAdapter<Voice, voiceAdapter.vo
             UserID=itemView.findViewById(R.id.user_id);
 
         }
+    }
+    public String init(View view){
+        SharedPreferences preferences =view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        likedBy= preferences.getString("UserName","");
+        Log.v("In VOice Ada",likedBy);
+        return likedBy;
+    }
+    public void updateLikeInfo(String likedBy,String userId){
+        Log.v("Like BY",likedBy);
+        Log.v("Like to",userId);
+        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+        DatabaseReference drf=firebaseDatabase.getReference();
+
     }
 }
