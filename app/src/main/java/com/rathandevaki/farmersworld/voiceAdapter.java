@@ -20,6 +20,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class voiceAdapter extends FirebaseRecyclerAdapter<Voice, voiceAdapter.voiceViewholder> {
@@ -110,11 +115,20 @@ public class voiceAdapter extends FirebaseRecyclerAdapter<Voice, voiceAdapter.vo
         Log.v("In VOice Ada",likedBy);
         return likedBy;
     }
-    public void updateLikeInfo(String likedBy,String userId){
+    public void updateLikeInfo(String likedBy,String likedTo){
         Log.v("Like BY",likedBy);
-        Log.v("Like to",userId);
+        Log.v("Like to",likedTo);
         FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
         DatabaseReference drf=firebaseDatabase.getReference();
+        final HashMap<String, Object> usersMap = new HashMap<>();
+        final String pushKey = drf.push().getKey();
 
+        DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy, HH:mm");
+        String date = df.format(Calendar.getInstance().getTime());
+        Log.v("Date",date);
+
+        usersMap.put("Date",date);
+        usersMap.put("Note",likedBy+" Liked Your Post. ");
+        drf.child("Notifications").child(likedTo).child(pushKey).setValue(usersMap);
     }
 }
