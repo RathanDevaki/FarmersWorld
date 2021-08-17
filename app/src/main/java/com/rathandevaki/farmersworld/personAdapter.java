@@ -2,6 +2,7 @@ package com.rathandevaki.farmersworld;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,11 +16,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
 
 public class personAdapter extends FirebaseRecyclerAdapter<
         Person, personAdapter.personsViewholder> {
   ImageView ProductPhoto;
+    public String likedBy;
  // ImageView likeButton;
 
     private Context mContext;
@@ -47,7 +56,8 @@ public class personAdapter extends FirebaseRecyclerAdapter<
         View view
                 = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.activity_person, parent, false);
-
+        likedBy=init(view);
+        Log.v("LKB",likedBy);
         return new personAdapter.personsViewholder(view);
     }
 
@@ -68,8 +78,8 @@ public class personAdapter extends FirebaseRecyclerAdapter<
             @Override
             public void onClick(View view) {
                 holder.likeButton.setImageResource(R.drawable.ic_baseline_like_red_24);
-              //  updateLikeInfo(model.getPrefID(),model.getUserID());
-                Log.v("Likde By","123");
+                updateLikeInfo(likedBy,model.getUserID());
+                Log.v("Likde By",likedBy);
 
 
             }
@@ -106,25 +116,27 @@ public class personAdapter extends FirebaseRecyclerAdapter<
             Quantity= itemView.findViewById(R.id.quantity);
         }
     }
-
-  /*  public void updateLikeInfo(String pref_userId,String user_id)
-    {
-
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
-        String currentDateandTime = sdf.format(new Date());
-
-        DatabaseReference databaseReference;
+    public String init(View view){
+        SharedPreferences preferences =view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        likedBy= preferences.getString("UserName","");
+        Log.v("In VOice Ada",likedBy);
+        return likedBy;
+    }
+    public void updateLikeInfo(String likedBy,String likedTo){
+        Log.v("Like BY",likedBy);
+        Log.v("Like to",likedTo);
         FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
-        databaseReference=firebaseDatabase.getReference();
-        final HashMap<String, Object> pushMap = new HashMap<>();
-        String notificationString = pref_userId+ " Liked Your Photo";
+        DatabaseReference drf=firebaseDatabase.getReference();
+        final HashMap<String, Object> usersMap = new HashMap<>();
+        final String pushKey = drf.push().getKey();
 
-        final String pushKey=databaseReference.push().getKey();
-        pushMap.put("Notification",notificationString);
-        pushMap.put("DateNtime",currentDateandTime);
+        DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy, HH:mm");
+        String date = df.format(Calendar.getInstance().getTime());
+        Log.v("Date",date);
 
-
-      //  databaseReference.child("Notifications").child(user_id).child(pushKey).setValue(pushMap
-
-    }*/
+        usersMap.put("Date",date);
+        usersMap.put("Note",likedBy+" Liked Your Post. ");
+        drf.child("Notifications").child(likedTo).child(pushKey).setValue(usersMap);
+        //complete
+    }
 }

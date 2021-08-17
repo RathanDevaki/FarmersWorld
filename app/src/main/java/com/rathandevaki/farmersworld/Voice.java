@@ -56,41 +56,5 @@ public class Voice {
     {
         this.ProfilePhoto = ProfilePhoto;
     }
-/*
 
-    public String getProductPhoto()
-    {
-        return ProductPhoto;
-    }
-    public void setProductPhoto(String ProductPhoto)
-    {
-        this.ProductPhoto = ProductPhoto;
-    }
-
-    public String getProductName()
-    {
-        return ProductName;
-    }
-    public void setProductName(String ProductName)
-    {
-        this.ProductName = ProductName;
-    }
-
-
-    public String getRate()
-    {
-        return Rate;
-    }
-    public void setRate(String Rate)
-    {
-        this.Rate = Rate;
-    }
-    public String getQuantity()
-    {
-        return Quantity;
-    }
-    public void Quantity(String Quantity)
-    {
-        this.Quantity = Quantity;
-    } */
 }

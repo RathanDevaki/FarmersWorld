@@ -12,7 +12,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 public class ProductAdapter extends FirebaseRecyclerAdapter<SingleProductPost,ProductAdapter.productViewholder> {
-
+    public String likedBy;
 
     public ProductAdapter(@NonNull FirebaseRecyclerOptions<SingleProductPost> options)
     {
@@ -34,6 +34,7 @@ public class ProductAdapter extends FirebaseRecyclerAdapter<SingleProductPost,Pr
     {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.single_product_post, parent, false);
+
         return new productViewholder(view);
     }
     static class productViewholder extends RecyclerView.ViewHolder {
@@ -47,4 +48,6 @@ public class ProductAdapter extends FirebaseRecyclerAdapter<SingleProductPost,Pr
             Quantity= itemView.findViewById(R.id.quantity);
         }
     }
+
+
 }

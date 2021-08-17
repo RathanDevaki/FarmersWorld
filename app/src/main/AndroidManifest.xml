@@ -19,7 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FarmersWorld"
         android:usesCleartextTraffic="true">
-        <activity android:name=".VideoActivity"></activity>
+        <activity android:name=".Notifi"></activity>
+        <activity android:name=".UserNotifications" />
+        <activity android:name=".VideoActivity" />
         <activity android:name=".Chat" />
         <activity android:name=".UsersActivity" />
         <activity android:name=".WorkingOpportunity" />

@@ -23,6 +23,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.rathandevaki.farmersworld.Demo;
 import com.rathandevaki.farmersworld.FarmerVoice;
 import com.rathandevaki.farmersworld.R;
+import com.rathandevaki.farmersworld.UserNotifications;
 import com.rathandevaki.farmersworld.UsersActivity;
 import com.rathandevaki.farmersworld.WorkingOpportunity;
 
@@ -30,7 +31,7 @@ public class HomeFragment extends Fragment {
     Button buttonTriggerNotification;
 
     private HomeViewModel homeViewModel;
-    LinearLayout _add_product,_farmer_voice,_working_opportunity,_chat;
+    LinearLayout _add_product,_farmer_voice,_working_opportunity,_chat,_notification;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
@@ -45,7 +46,7 @@ public class HomeFragment extends Fragment {
     }
     public void init(View root)
     {
-
+        _notification=(LinearLayout) root.findViewById(R.id.notification);
         _add_product=(LinearLayout) root.findViewById(R.id.main_product_exchange);
         _farmer_voice= (LinearLayout) root.findViewById(R.id.farmer_voice);
         _working_opportunity=root.findViewById(R.id.working_opportunity);
@@ -85,6 +86,14 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 FragmentManager fm=getActivity().getSupportFragmentManager();
                 Intent i = new Intent(getActivity(), UsersActivity.class);
+                startActivity(i);
+            }
+        });
+        _notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fm=getActivity().getSupportFragmentManager();
+                Intent i=new Intent(getActivity(), UserNotifications.class);
                 startActivity(i);
             }
         });
