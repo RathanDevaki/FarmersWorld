@@ -10,7 +10,7 @@ public class GalleryViewModel extends ViewModel {
 
     public GalleryViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("Farmer World app will helps farmers to sell their crops with the reasonable price.\n" +
+        mText.setValue("Farmer World app will helps farmers to exchange their crops without involving money.\n" +
                 "We helps farmers not getting cheated by middle man and commissions.\n" +
                 "This is the right platform where a farmer can sell or buy the crops ,as well he can also hire employees to finish his work.\n" +
                 "we also provided an option to the farmers to share their thoughts to other farmers. and one can also teach about farming and so on.");

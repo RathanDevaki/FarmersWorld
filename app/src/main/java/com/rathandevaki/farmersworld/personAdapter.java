@@ -80,8 +80,6 @@ public class personAdapter extends FirebaseRecyclerAdapter<
                 holder.likeButton.setImageResource(R.drawable.ic_baseline_like_red_24);
                 updateLikeInfo(likedBy,model.getUserID());
                 Log.v("Likde By",likedBy);
-
-
             }
         });
         holder.ctc.setOnClickListener(new View.OnClickListener() {
@@ -92,13 +90,23 @@ public class personAdapter extends FirebaseRecyclerAdapter<
                 view.getContext().startActivity(intent);
             }
         });
+        holder.commentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.v("Click","Comment");
+                Intent intent = new Intent(view.getContext(), PostComments.class);
+                intent.putExtra("COMMENTOR", model.getDataKey());
+                intent.putExtra("Type","UserPost");
+                view.getContext().startActivity(intent);
+            }
+        });
 
     }
     // Sub Class to create references of the views in Crad
     // view (here "person.xml")
     class personsViewholder extends RecyclerView.ViewHolder {
         TextView ProductName,Quantity,Rate,Required,UserID,UserName,Verity,ctc;
-        ImageView likeButton;
+        ImageView likeButton,commentButton;
 
 
         public personsViewholder(@NonNull View itemView)
@@ -114,12 +122,13 @@ public class personAdapter extends FirebaseRecyclerAdapter<
             ProductName   = itemView.findViewById(R.id.product_name);
             Rate = itemView.findViewById(R.id.rate);
             Quantity= itemView.findViewById(R.id.quantity);
+            commentButton=itemView.findViewById(R.id.commentButton);
         }
     }
     public String init(View view){
         SharedPreferences preferences =view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         likedBy= preferences.getString("UserName","");
-        Log.v("In VOice Ada",likedBy);
+       // Log.v("In VOice Ada",likedBy);
         return likedBy;
     }
     public void updateLikeInfo(String likedBy,String likedTo){

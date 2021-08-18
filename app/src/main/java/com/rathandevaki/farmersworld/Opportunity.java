@@ -3,7 +3,7 @@ package com.rathandevaki.farmersworld;
 
 public class Opportunity {
 
-    private String JobDescription;
+    private String JobDescription,DataKey;
 
     private String ProfilePhoto, UserID, UserName, JobDuration,Location,Salary,Vacancies;
 
@@ -12,6 +12,13 @@ public class Opportunity {
     public Opportunity() {
     }
 
+    public String getDataKey(){
+        return DataKey;
+    }
+    public void setDataKey(String DataKey)
+    {
+        this.DataKey=DataKey;
+    }
 
     // Getter and setter method
     //userid

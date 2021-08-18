@@ -5,13 +5,19 @@ public class Voice {
 
     private String AboutPost;
 
-    private String ProfilePhoto,UserID,UserName,PostPhoto;
+    private String ProfilePhoto,UserID,UserName,PostPhoto,DataKey;
 
     // Mandatory empty constructor
     // for use of FirebaseUI
     public Voice() {}
 
-
+    public String getDataKey(){
+        return DataKey;
+    }
+    public void setDataKey(String DataKey)
+    {
+        this.DataKey=DataKey;
+    }
     // Getter and setter method
     public String getUserID ()
     {

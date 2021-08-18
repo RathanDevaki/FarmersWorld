@@ -209,9 +209,9 @@ public class AddVoice extends Fragment {
                             usersMap.put("UserName",user_name_);
                             usersMap.put("PostPhoto", uri.toString());
                             usersMap.put("ProfilePhoto", profile_photo);
-                             usersMap.put("AboutPost",_about_post);
+                            usersMap.put("AboutPost",_about_post);
                             usersMap.put("UserID",user_id);
-
+                            usersMap.put("DataKey",pushKey);
                             final String pushKey = databaseReference.push().getKey();
 
                             databaseReference.child("FarmerVoice").child(pushKey).setValue(usersMap).addOnSuccessListener(new OnSuccessListener<Void>() {

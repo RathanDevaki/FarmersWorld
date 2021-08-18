@@ -179,7 +179,7 @@ public class AddOpportunity extends Fragment {
                             usersMap.put("UserID", user_id);
 
                             final String pushKey = databaseReference.push().getKey();
-
+                            usersMap.put("DataKey",pushKey);
                             databaseReference.child("JobOpportunity").child(pushKey).setValue(usersMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {

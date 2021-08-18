@@ -159,17 +159,18 @@
                     android:drawablePadding="8dp"
                     android:drawableLeft="@drawable/ic_baseline_local_phone_24"
                     android:id="@+id/clickToCall"/>
-                <TextView
+
+                <ImageView
                     android:layout_margin="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
+                    android:id="@+id/commentButton"
                     android:textSize="18sp"
                     android:gravity="center"
                     android:layout_marginTop="12dp"
                     android:drawablePadding="8dp"
                     android:layout_gravity="left"
-                    android:drawableStart="@drawable/ic_baseline_chat_24"
+                    android:src="@drawable/ic_baseline_chat_24"
                     />
             </LinearLayout>
         </LinearLayout>

@@ -1,8 +1,6 @@
 package com.rathandevaki.farmersworld;
 
 public class Notifi {
-
-
     private String Note,Date;
 
     // Mandatory empty constructor

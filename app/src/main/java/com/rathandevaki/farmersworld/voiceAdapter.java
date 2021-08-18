@@ -57,6 +57,8 @@ public class voiceAdapter extends FirebaseRecyclerAdapter<Voice, voiceAdapter.vo
     @Override
     protected void onBindViewHolder(@NonNull voiceAdapter.voiceViewholder holder, int position, @NonNull Voice model) {
 
+        holder.DataKey=model.getDataKey();
+
         holder.UserName.setText(model.getUserName());
         holder.UserID.setText(model.getUserID());
         holder.AboutPost.setText(model.getAboutPost());
@@ -75,8 +77,6 @@ public class voiceAdapter extends FirebaseRecyclerAdapter<Voice, voiceAdapter.vo
                 holder.likeButton.setImageResource(R.drawable.ic_baseline_like_red_24);
                 updateLikeInfo(likedBy,model.getUserID());
                 Log.v("Likde By",likedBy);
-
-
             }
         });
         holder.ctc.setOnClickListener(new View.OnClickListener() {
@@ -87,15 +87,23 @@ public class voiceAdapter extends FirebaseRecyclerAdapter<Voice, voiceAdapter.vo
                 view.getContext().startActivity(intent);
             }
         });
-
+        holder.commentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.v("Click","Comment");
+                Intent intent = new Intent(view.getContext(), PostComments.class);
+                intent.putExtra("COMMENTOR", model.getDataKey());
+                intent.putExtra("Type","FarmerVoice");
+               view.getContext().startActivity(intent);
+            }
+        });
     }
-
     // Sub Class to create references of the views in Crad
     // view (here "voice.xml")
     public class voiceViewholder extends RecyclerView.ViewHolder {
         TextView AboutPost,UserID,UserName,ctc;
-        ImageView likeButton;
-
+        ImageView likeButton,commentButton;
+        String DataKey;
         public voiceViewholder(@NonNull View itemView)
         {
             super(itemView);
@@ -106,13 +114,14 @@ public class voiceAdapter extends FirebaseRecyclerAdapter<Voice, voiceAdapter.vo
             likeButton=itemView.findViewById(R.id.likeButton);
             UserName=itemView.findViewById(R.id.user_name);
             UserID=itemView.findViewById(R.id.user_id);
-
+            commentButton=itemView.findViewById(R.id.commentButton);
         }
     }
-    public String init(View view){
+    public String init(View view)
+    {
         SharedPreferences preferences =view.getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         likedBy= preferences.getString("UserName","");
-        Log.v("In VOice Ada",likedBy);
+       // Log.v("In VOice Ada",likedBy);
         return likedBy;
     }
     public void updateLikeInfo(String likedBy,String likedTo){

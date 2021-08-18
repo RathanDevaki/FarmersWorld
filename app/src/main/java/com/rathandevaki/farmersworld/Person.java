@@ -7,7 +7,7 @@ public class Person extends ProfileFragment
 {
    // ProfileFragment uid= new ProfileFragment();
     Context context;
-    private String ProductName;
+    private String ProductName,DataKey;
     private String likedUsedId="";
     private String Rate,ProductPhoto,Required,UserID,UserName,Verity;
     SharedPreferences sharedPreferences;
@@ -27,6 +27,14 @@ public class Person extends ProfileFragment
        likedUsedId= sharedPreferences.getString("UserID", "");
         return likedUsedId;
     }*/
+
+    public String getDataKey(){
+        return DataKey;
+    }
+    public void setDataKey(String DataKey)
+    {
+        this.DataKey=DataKey;
+    }
     public String getUserID ()
     {
         return UserID;

@@ -85,13 +85,25 @@ public class opportunityAdapter extends FirebaseRecyclerAdapter<Opportunity, opp
                 view.getContext().startActivity(intent);
             }
         });
+
+        holder.commentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.v("Click","Comment");
+                Intent intent = new Intent(view.getContext(), PostComments.class);
+                intent.putExtra("COMMENTOR", model.getDataKey());
+                intent.putExtra("Type","JobOpportunity");
+                view.getContext().startActivity(intent);
+            }
+        });
+
     }
 
     // Sub Class to create references of the views in Crad
     // view (here "voice.xml")
     public class opportunityViewholder extends RecyclerView.ViewHolder {
         TextView JobDescription,UserID,UserName,ctc,aboutPost,jobDuration,salary,vacancies,jobLocation;
-        ImageView likeButton;
+        ImageView likeButton,commentButton;
         public opportunityViewholder(@NonNull View itemView)
         {
             super(itemView);
@@ -107,6 +119,7 @@ public class opportunityAdapter extends FirebaseRecyclerAdapter<Opportunity, opp
             aboutPost=itemView.findViewById(R.id.about_post);
             UserName=itemView.findViewById(R.id.user_name);
             UserID=itemView.findViewById(R.id.user_id);
+            commentButton=itemView.findViewById(R.id.commentButton);
 
         }
     }
